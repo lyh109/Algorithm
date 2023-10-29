@@ -7,22 +7,18 @@ int main()
 	ios::sync_with_stdio(false);
 	cin.tie(NULL); cout.tie(NULL);
 
-	multiset<int> number[5];
+	int number[5];
 	int average = 0;
 
 	for (int i = 0; i < 5; ++i)
 	{
-		int n;
-		cin >> n;
-		number->insert(n);
+		cin >> number[i];
+		average += number[i];
 	}
 
-	for (auto it = number->begin(); it != number->end(); ++it)
-	{
-		average += *it;
-	}
+	sort(number, number + 5);
 
-	cout << average / 5 << '\n' << *(++++number->begin()) << '\n';
+	cout << average / 5 << '\n' << number[2] << '\n';
 
 	return 0;
 }
