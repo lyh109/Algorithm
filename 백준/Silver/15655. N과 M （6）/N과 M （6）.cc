@@ -11,20 +11,18 @@ void func(int k)
 	if (k == m)
 	{
 		for(int i = 0; i < m; ++i)
-			cout << arr[i] << ' ';
+			cout << num[arr[i]] << ' ';
 		cout << '\n';
 		return;
 	}
 
-	for (int i = 0; i < n; ++i)
+	int st = 0;
+	if(k != 0) st = arr[k - 1] + 1;
+	for (int i = st; i < n; ++i)
 	{
 		if(isUsed[i]) continue;
-		if (k > 0)
-		{
-			if(arr[k - 1] > num[i]) continue;
-		}
 
-		arr[k] = num[i];
+		arr[k] = i;
 		isUsed[i] = true;
 		func(k + 1);
 		isUsed[i] = false;
@@ -40,7 +38,6 @@ int main()
 	for(int i = 0; i < n; ++i)
 		cin >> num[i];
 	sort(num, num + n);
-
 	func(0);
 
 	return 0;
